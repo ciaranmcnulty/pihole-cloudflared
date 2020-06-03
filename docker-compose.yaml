@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  pihole:
+    image: pihole/pihole
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "80:80/tcp"
+      - "443:443/tcp"
+    environment:
+      TZ: 'Europe/London'
+      WEBPASSWORD: $PIHOLE_PASSWORD
+      VIRTUAL_HOST: $PIHOLE_HOST
+      DNS1: 10.5.0.2
+      DNS2: 10.5.0.2
+    volumes:
+       - './etc-pihole/:/etc/pihole/'
+    networks:
+       - vpc
+    restart: unless-stopped
+
+  doh:
+    environment:
+      PORT: 53
+    image: visibilityspots/cloudflared
+    networks:
+      vpc:
+        ipv4_address: 10.5.0.2
+    restart: unless-stopped
+
+networks:
+  vpc:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
