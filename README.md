@@ -6,7 +6,7 @@ This does *not* use pihole's DHCP functionality; you need to give the device a s
 
 ## Usage
 
-Copy `.env.dist` and populate with an admin password for pihole and a hostname for it
+Copy `.env.dist` to `.env` and populate with an admin password for pihole and a hostname for it
 
 To start: `docker-compose up -d`
 
