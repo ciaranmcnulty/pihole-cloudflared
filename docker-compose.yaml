@@ -10,7 +10,7 @@ services:
       - "80:80/tcp"
       - "443:443/tcp"
     environment:
-      TZ: 'Europe/London'
+      TZ: ${TZ:-'Europe/London'}
       WEBPASSWORD: $PIHOLE_PASSWORD
       VIRTUAL_HOST: $PIHOLE_HOST
       DNS1: 10.5.0.2
