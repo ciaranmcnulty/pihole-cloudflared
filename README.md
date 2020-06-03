@@ -6,11 +6,13 @@ This does *not* use pihole's DHCP functionality; you need to give the device a s
 
 ## Usage
 
-Copy `.env.dist` to `.env` and populate with an admin password for pihole and a hostname for it - this needs to be an existing hostname that points to the device
+Copy `.env.dist` to `.env` and populate with an admin password for pihole and a hostname for it - this needs to be an existing hostname that points to the device.
 
 To start: `docker-compose up -d`
 
 To stop: `docker-compose down`
+
+Visit the interface in your browser at whatever hostname you specified
 
 ## Notes
 
